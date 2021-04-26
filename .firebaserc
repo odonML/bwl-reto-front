@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "bwl-reto": {
+      "hosting": {
+        "BWL-reto": [
+          "bwl-reto"
+        ]
+      }
+    }
+  }
+}

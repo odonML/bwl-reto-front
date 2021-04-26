@@ -1,0 +1,77 @@
+<div class="row mt-2">
+  <h4 class="col-lg-12">Registro</h4>
+</div>
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div class="col-lg-6">
+      <form class="" #userForm="ngForm" (ngSubmit)="addUser(userForm)">
+        <div class="form-row">
+          <div class="form-group col-lg-12">
+            <label for="">Nombre:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="nombre"
+              name="name"
+              [(ngModel)]="user.name"
+              aria-describedby="emailHelp"
+              placeholder="Nombre"
+            />
+          </div>
+          <p class="valid" *ngIf="!nameV">Tu nombre debe tener de 4 a 15 caracteres solo letras</p>
+          <div class="form-group col-lg-12">
+            <label for="">Email:</label>
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              name="email"
+              [(ngModel)]="user.email"
+              aria-describedby="emailHelp"
+              placeholder="Email"
+            />
+          </div>
+          <div class="form-group col-lg-6">
+            <label for="">Contraseña:</label>
+            <input
+              type="password"
+              class="form-control"
+              id="password"
+              name="password"
+              [(ngModel)]="user.password"
+              aria-describedby="emailHelp"
+              placeholder="Contraseña"
+            />
+          </div>
+          <div class="form-group col-lg-6">
+            <label for="">Confirme su Contraseña:</label>
+            <input
+              type="password"
+              class="form-control"
+              id="password"
+              name="password_confir"
+              [(ngModel)]="user.password_confir"
+              aria-describedby="emailHelp"
+              placeholder="Confirme su Contraseña"
+            />
+          </div>
+          <div class="valid col-lg-12" *ngIf="!passV">
+            Tu Contraseña debe de tener: 
+            <ul>
+              <li>Minimo 8 caracteres</li>
+              <li>Maximo 15</li>
+              <li>Al menos una letra mayúscula</li>
+              <li>Al menos una letra minucula</li>
+              <li>Al menos un dígito</li>
+              <li>No espacios en blanco</li>
+              <li>Al menos 1 caracter especial</li>
+            </ul>
+          </div>
+          <button type="submit" class="btn btn-primary col-lg-6">
+            Registrar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

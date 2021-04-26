@@ -1,0 +1,107 @@
+<div class="dashboard row">
+  <div class="datos col-8">
+    <div class="row" *ngIf="!ver">
+      <div class="col-6">
+        <h2>Selecciona un pais</h2>
+      </div>
+    </div>
+    <div class="row" *ngIf="ver">
+      <div class="col-6">
+        <div class="card">
+          <h5 class="card-header">Clima</h5>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-6">
+                <h5 class="card-title">{{ datos.clima }}</h5>
+                <img [src]="datos.clima_icon" alt="" />
+              </div>
+              <div class="col-6">
+                <h2>{{ datos.temp_c }} °C</h2>
+                <h2>{{ datos.temp_f }} °F</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="card">
+          <h5 class="card-header">Pais</h5>
+          <div class="card-body">
+            <h5 class="card-title">{{ datos.pais }}</h5>
+            <img [src]="datos.bandera" alt="" />
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="card">
+          <h5 class="card-header">Tareas Pendientes:</h5>
+          <div class="card-body" *ngFor="let item of pending">
+            <label for=""><input type="checkbox"> {{item.task}}</label>
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="card">
+          <h5 class="card-header">Hora:</h5>
+          <div class="card-body">
+            <h2 class="card-title">{{ horas.hora | date: "mediumTime" }}</h2>
+            <h5>{{ horas.zone }}</h5>
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="card">
+          <h5 class="card-header">Tareas Completadas</h5>
+          <div class="card-body" *ngFor="let item of done">
+            <label for=""><input type="checkbox"checked> {{item.task}}</label>
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="card">
+          <h5 class="card-header">Zona Horaria:</h5>
+          <div class="card-body">
+            <button
+              class="btn btn-outline-info"
+              type="button"
+              (click)="getZoneH(zonaH.zona1)"
+            >
+              {{ zonaH.zona1 }}
+            </button>
+
+            <button
+              class="btn btn-outline-info"
+              type="button"
+              (click)="getZoneH(zonaH.zona2)"
+            >
+              {{ zonaH.zona2 }}
+            </button>
+
+            <button
+              class="btn btn-outline-info"
+              type="button"
+              (click)="getZoneH(zonaH.zona3)"
+            >
+              {{ zonaH.zona3 }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="paises col-3">
+    <h5>Paises:</h5>
+    <ul class="list-group">
+      <li *ngFor="let item of countriesList" class="list-group-item">
+        <button
+          class="btn btn-outline-primary"
+          type="button"
+          (click)="getCountry(item.pais, item.img)"
+        >
+          <img [src]="item.img" alt="" />
+          {{ item.pais }}
+        </button>
+      </li>
+    </ul>
+  </div>
+</div>
